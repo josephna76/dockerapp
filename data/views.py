@@ -51,7 +51,7 @@ def UploadView(request):
         io_string = io.StringIO(data_set)
         next(io_string)
         CsvData.objects.all().delete()
-        for column in csv.reader(io_string, delimiter=';', quotechar="|"):
+        for column in csv.reader(io_string):
             _, created = CsvData.objects.update_or_create(
                 country=column[0],
                 latitude=column[1],
